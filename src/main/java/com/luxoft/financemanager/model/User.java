@@ -11,11 +11,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name="name")
     private String userName;
+
+    @Column(name="password")
     private String password;
     private String email;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "default_report_date")
     private Date defaultReportDate;
 
     @OneToMany(mappedBy = "user")
