@@ -8,9 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginResultController {
 
-    @RequestMapping(value = "/loginresult.html", method = RequestMethod.POST)
-    public ModelAndView getLoginForm() {
-        ModelAndView model = new ModelAndView("loginresult");
-        return model;
+//    @RequestMapping(value = "/loginresult.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/welcomePage.html", method = RequestMethod.GET)
+    public ModelAndView getAdminWelcomePage() {
+        return new ModelAndView("adminWelcomePage");
+    }
+
+    @RequestMapping(value = "/user/welcomePage.html", method = RequestMethod.GET)
+    public ModelAndView getUserWelcomePage() {
+        return new ModelAndView("userWelcomePage");
     }
 }

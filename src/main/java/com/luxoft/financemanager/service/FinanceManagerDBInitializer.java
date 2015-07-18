@@ -70,8 +70,12 @@ public class FinanceManagerDBInitializer {
 
         Shop lidlKrakow3 = addShopToDB(cityKrakow, lidl, "Samuela Bogumila Lindego 1c");
 
+//===============  ROLE  ==============================
+        Role admin = addRoleToDB("admin");
+
+        Role user = addRoleToDB("user");
 //===============  USER -> defaultUser ==============================
-        User defaultUser = addUserToDB("username", "password", "default.user@gmail.com", new Date());
+        User defaultUser = addUserToDB("username", "password", "default.user@gmail.com", new Date(), admin);
 
 //===============  SHOPPING ITEMS  ==============================
         addShoppingItemToDB(lidlKrakow1, other, defaultUser, pln, 1000,
@@ -86,6 +90,14 @@ public class FinanceManagerDBInitializer {
 
         session.getTransaction().commit();
         session.close();
+    }
+
+    private static Role addRoleToDB(String roleName) {
+        Role role = new Role();
+        role.setRoleName(roleName);
+        session.save(role);
+
+        return role;
     }
 
     private static SessionFactory getSessionFactory() {
@@ -111,12 +123,13 @@ public class FinanceManagerDBInitializer {
         session.save(shoppingItem);
     }
 
-    private static User addUserToDB(String userName, String password, String email, Date defaultReportDate) {
+    private static User addUserToDB(String userName, String password, String email, Date defaultReportDate, Role role) {
         User user = new User();
         user.setUserName(userName);
         user.setPassword(password);
         user.setEmail(email);
         user.setDefaultReportDate(defaultReportDate);
+        user.setRole(role);
         session.save(user);
 
         return user;

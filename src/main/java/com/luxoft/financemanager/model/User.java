@@ -26,6 +26,18 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<ShoppingItem> shoppingItems = new ArrayList<ShoppingItem>();
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public Collection<ShoppingItem> getShoppingItems() {
         return shoppingItems;
     }
