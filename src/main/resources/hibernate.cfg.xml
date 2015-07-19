@@ -39,6 +39,7 @@
         <mapping class="com.luxoft.financemanager.model.Shop"/>
         <mapping class="com.luxoft.financemanager.model.User"/>
         <mapping class="com.luxoft.financemanager.model.ShoppingItem"/>
+        <mapping class="com.luxoft.financemanager.model.Role"/>
 
     </session-factory>
 </hibernate-configuration>

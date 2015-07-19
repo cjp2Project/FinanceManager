@@ -11,15 +11,32 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name="name")
     private String userName;
+
+    @Column(name="password")
     private String password;
     private String email;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "default_report_date")
     private Date defaultReportDate;
 
     @OneToMany(mappedBy = "user")
     private Collection<ShoppingItem> shoppingItems = new ArrayList<ShoppingItem>();
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public Collection<ShoppingItem> getShoppingItems() {
         return shoppingItems;
