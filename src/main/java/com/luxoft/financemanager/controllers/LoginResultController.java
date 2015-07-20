@@ -23,7 +23,6 @@ public class LoginResultController {
         this.service = service;
     }
 
-    //    @RequestMapping(value = "/loginresult.html", method = RequestMethod.POST)
     @RequestMapping(value = "/admin/welcomePage.html", method = RequestMethod.GET)
     public ModelAndView getAdminWelcomePage(Principal principal) {
         String userName = principal.getName();
