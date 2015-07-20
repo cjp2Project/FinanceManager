@@ -68,7 +68,7 @@ public class DBLoader {
 
         Role user = addRoleToDB("user");
 //===============  USER -> defaultUser ==============================
-        User defaultUser = addUserToDB("username", "password", "default.user@gmail.com", new Date(), admin);
+        User defaultUser = addUserToDB("user", "password", "default.user@gmail.com", new Date(), admin);
 
 //===============  SHOPPING ITEMS  ==============================
         addShoppingItemToDB(lidlKrakow1, other, defaultUser, pln, 1000,
