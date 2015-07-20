@@ -32,6 +32,7 @@
                 <value>com.luxoft.financemanager.model.ShopBranch</value>
                 <value>com.luxoft.financemanager.model.ShoppingCategory</value>
                 <value>com.luxoft.financemanager.model.User</value>
+                <value>com.luxoft.financemanager.model.Role</value>
             </list>
         </property>
         <property name="hibernateProperties">

@@ -23,7 +23,7 @@
     <tr>
       <td>
         <form:label path="user">
-          <spring:message text="User_ID"/>
+          <spring:message text="User"/>
         </form:label>
       </td>
       <td>
@@ -34,7 +34,7 @@
     <tr>
       <td>
         <form:label path="shop">
-          <spring:message text="Shop_ID"/>
+          <spring:message text="Shop"/>
         </form:label>
       </td>
       <td>
