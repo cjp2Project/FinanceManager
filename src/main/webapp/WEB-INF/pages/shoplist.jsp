@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Damian
@@ -15,11 +17,32 @@
 </head>
 <body>
 
+  <table>
+    <tr>
+      <td>Please select:</td>
+      <td><form:select path="shop">
+        <form:option value="" label="...." />
+        <form:options items="${shops}" />
+      </form:select>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="submit" name="submit" value="Submit"></td>
+    </tr>
+    <tr>
+  </table>
 
+
+
+<%--<core:forEach var="shop" items="${shops}">--%>
+  <%--<core:out value="${shop}"/>--%>
+<%--</core:forEach>--%>
+
+<%--${shop.street}--%>
+<%--
 <c:url var="addAction" value="/shoplist.html" ></c:url>
 <form:form action="${addAction}" modelAttribute="shopping_item">
   <table>
-
     <tr>
       <td>
         <form:label path="user">
@@ -31,17 +54,20 @@
       </td>
     </tr>
 
-    <tr>
-      <td>
-        <form:label path="shop">
-          <spring:message text="Shop"/>
-        </form:label>
-      </td>
-      <td>
-        <form:input path="shop" />
-      </td>
-    </tr>
-
+      &lt;%&ndash;<tr>&ndash;%&gt;
+      &lt;%&ndash;<td>&ndash;%&gt;
+      &lt;%&ndash;<form:label path="shop">&ndash;%&gt;
+      &lt;%&ndash;<spring:message text="Shop"/>&ndash;%&gt;
+      &lt;%&ndash;</form:label>&ndash;%&gt;
+      &lt;%&ndash;</td>&ndash;%&gt;
+      &lt;%&ndash;<td>&ndash;%&gt;
+      &lt;%&ndash;<form:input path="shop" />&ndash;%&gt;
+      &lt;%&ndash;</td>&ndash;%&gt;
+      &lt;%&ndash;</tr>&ndash;%&gt;
+    <form:select path="shop">
+      <form:option value="NONE" label="--- Select ---"/>
+      <form:options items="${shops}" />
+    </form:select>
 
     <tr>
       <td>
@@ -112,7 +138,7 @@
     <input type="submit"
            value="<spring:message text="Add Shopping Item"/>" />
   </table>
-</form:form>
+</form:form>--%>
 
 <%--<form:form method="POST" modelAttribute="city">--%>
 <%--<table>--%>

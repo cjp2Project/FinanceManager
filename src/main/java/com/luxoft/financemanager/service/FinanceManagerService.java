@@ -9,7 +9,6 @@ import java.util.List;
 public interface FinanceManagerService {
     void addShoppingItemToDB(ShoppingItem shoppingItem);
     public User getUserByUserName(String userName);
-}    void addShoppingItemToDB(ShoppingItem shoppingItem);
 
     List<Shop> listShops();
 }
