@@ -22,7 +22,7 @@ public class FinanceManagerController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/user/shoplist.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/addshoppingitem.html", method = RequestMethod.GET)
     public String listCities(Model model) {
         model.addAttribute("shop", new Shop());
         model.addAttribute("shops", service.listShops());

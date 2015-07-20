@@ -34,7 +34,9 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User where userName= :userName ");
         query.setString("userName", userName);
-        return (User) query.uniqueResult();
+        User user = (User) query.uniqueResult();
+        user.getShoppingItems().size();
+        return user;
     }
 
     @Override
