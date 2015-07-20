@@ -1,11 +1,10 @@
 package com.luxoft.financemanager.dao;
 
-import com.luxoft.financemanager.model.User;
+import com.luxoft.financemanager.model.City;
+import com.luxoft.financemanager.model.ShoppingItem;
 
-/**
- * Created by BSzewczyk on 2015-07-19.
- */
+import java.util.List;
+
 public interface FinanceManagerDAO {
-
-    public User getUserByUserName(String userName);
+    void addShoppingItemToDB(ShoppingItem shoppingItem);
 }

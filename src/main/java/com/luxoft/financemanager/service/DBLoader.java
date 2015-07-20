@@ -93,7 +93,7 @@ public class DBLoader {
     }
 
     private void addShoppingItemToDB(Shop shop, ShoppingCategory shoppingCategory, User user, Currency currency,
-                                            float amount, Date shoppingDate, String description, byte[] receiptScan) {
+                                     float amount, Date shoppingDate, String description, byte[] receiptScan) {
         ShoppingItem shoppingItem = new ShoppingItem();
         shoppingItem.setCurrency(currency);
         shoppingItem.setAmount(amount);

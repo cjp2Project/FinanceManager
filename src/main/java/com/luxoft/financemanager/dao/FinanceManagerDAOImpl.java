@@ -1,24 +1,22 @@
 package com.luxoft.financemanager.dao;
 
-import com.luxoft.financemanager.model.User;
-import com.luxoft.financemanager.service.SessionFactoryCreator;
-import org.hibernate.Query;
+import com.luxoft.financemanager.model.City;
+import com.luxoft.financemanager.model.ShoppingItem;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-/**
- * Created by BSzewczyk on 2015-07-19.
- */
+import java.util.List;
+
 public class FinanceManagerDAOImpl implements FinanceManagerDAO {
-    private SessionFactory sessionFactory = SessionFactoryCreator.getSessionFactory();
-    private Session session = null;
+    private SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sf) {
+        this.sessionFactory = sf;
+    }
 
     @Override
-    public User getUserByUserName(String userName) {
-        session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from User where userName= :userName");
-        query.setString("userName", userName);
-        User user = (User) query.uniqueResult();
-        return user;
+    public void addShoppingItemToDB(ShoppingItem shoppingItem) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(shoppingItem);
     }
 }

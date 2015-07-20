@@ -1,28 +1,23 @@
 package com.luxoft.financemanager.service;
 
 import com.luxoft.financemanager.dao.FinanceManagerDAO;
-import com.luxoft.financemanager.dao.FinanceManagerDAOImpl;
-import com.luxoft.financemanager.model.User;
+import com.luxoft.financemanager.model.ShoppingItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- * Created by BSzewczyk on 2015-07-19.
- */
 public class FinanceManagerServiceImpl implements FinanceManagerService {
+    @Autowired
+    private FinanceManagerDAO financeManagerDAO;
 
-
-    private FinanceManagerDAO financeManagerDAO = new FinanceManagerDAOImpl();
-
-    public FinanceManagerDAO getFinanceManagerDAO() {
-        return financeManagerDAO;
+    @Override
+    @Transactional
+    public void addShoppingItemToDB(ShoppingItem shoppingItem) {
+        financeManagerDAO.addShoppingItemToDB(shoppingItem);
     }
 
     public void setFinanceManagerDAO(FinanceManagerDAO financeManagerDAO) {
         this.financeManagerDAO = financeManagerDAO;
     }
 
-    @Override
-    public User getUserByUserName(String userName) {
-        return financeManagerDAO.getUserByUserName(userName);
-    }
+
 }

@@ -6,5 +6,4 @@ public class FinanceManagerDBInitializer {
         DBLoader loader = new DBLoader();
         loader.initDB();
     }
-
 }

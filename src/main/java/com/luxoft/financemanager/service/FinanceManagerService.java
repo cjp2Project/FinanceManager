@@ -1,7 +1,7 @@
 package com.luxoft.financemanager.service;
 
-import com.luxoft.financemanager.model.User;
+import com.luxoft.financemanager.model.ShoppingItem;
 
 public interface FinanceManagerService {
-    public User getUserByUserName(String userName);
+    void addShoppingItemToDB(ShoppingItem shoppingItem);
 }
