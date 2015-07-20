@@ -13,6 +13,10 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     @Autowired
     private FinanceManagerDAO financeManagerDAO;
 
+    public void setFinanceManagerDAO(FinanceManagerDAO financeManagerDAO) {
+        this.financeManagerDAO = financeManagerDAO;
+    }
+
     @Override
     @Transactional
     public User getUserByUserName(String userName) {
@@ -32,16 +36,14 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
         return financeManagerDAO.listShops();
     }
 
-    public void setFinanceManagerDAO(FinanceManagerDAO financeManagerDAO) {
-        this.financeManagerDAO = financeManagerDAO;
-    }
-
     @Override
+    @Transactional
     public void addCurrency(Currency currency) {
         this.financeManagerDAO.addCurrency(currency);
     }
 
     @Override
+    @Transactional
     public void updateCurrency(Currency currency) {
         this.financeManagerDAO.updateCurrency(currency);
     }
@@ -53,21 +55,25 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     }
 
     @Override
+    @Transactional
     public Currency getCurrencyById(int id) {
         return this.financeManagerDAO.getCurrencyById(id);
     }
 
     @Override
+    @Transactional
     public void removeCurrency(int id) {
         this.financeManagerDAO.removeCurrency(id);
     }
 
     @Override
+    @Transactional
     public void addCity(City city) {
         this.financeManagerDAO.addCity(city);
     }
 
     @Override
+    @Transactional
     public void updateCity(City city) {
         this.financeManagerDAO.updateCity(city);
     }
@@ -86,11 +92,13 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     }
 
     @Override
+    @Transactional
     public City getCityById(int id) {
         return this.financeManagerDAO.getCityById(id);
     }
 
     @Override
+    @Transactional
     public void removeCity(int id) {
         this.financeManagerDAO.removeCity(id);
     }
