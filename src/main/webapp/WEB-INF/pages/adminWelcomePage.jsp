@@ -7,6 +7,7 @@
 <body>
   <h1>ADMIN Clicked from login page</h1>
 
+  <p>Current user: ${user}</p>
   <a href="<c:url value="/j_spring_security_logout" />">Logout</a>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Shop List</title>
+  <title>Shop List</title>
 </head>
 <body>
 
@@ -99,14 +99,14 @@
     </tr>
 
 
-      <td>
-        <form:label path="receipt">
-          <spring:message text="Receipt"/>
-        </form:label>
-      </td>
-      <td>
-        <form:input path="receipt" />
-      </td>
+    <td>
+      <form:label path="receipt">
+        <spring:message text="Receipt"/>
+      </form:label>
+    </td>
+    <td>
+      <form:input path="receipt" />
+    </td>
     </tr>
 
     <input type="submit"
@@ -115,20 +115,20 @@
 </form:form>
 
 <%--<form:form method="POST" modelAttribute="city">--%>
-  <%--<table>--%>
-    <%--<tr>--%>
-      <%--<td>Please select:</td>--%>
-      <%--<td><form:select path="cityName">--%>
-        <%--<form:option value="" label="...." />--%>
-        <%--<form:options items="${cities}" />--%>
-      <%--</form:select>--%>
-      <%--</td>--%>
-    <%--</tr>--%>
-    <%--<tr>--%>
-      <%--<td><input type="submit" name="submit" value="Submit"></td>--%>
-    <%--</tr>--%>
-    <%--<tr>--%>
-  <%--</table>--%>
+<%--<table>--%>
+<%--<tr>--%>
+<%--<td>Please select:</td>--%>
+<%--<td><form:select path="cityName">--%>
+<%--<form:option value="" label="...." />--%>
+<%--<form:options items="${cities}" />--%>
+<%--</form:select>--%>
+<%--</td>--%>
+<%--</tr>--%>
+<%--<tr>--%>
+<%--<td><input type="submit" name="submit" value="Submit"></td>--%>
+<%--</tr>--%>
+<%--<tr>--%>
+<%--</table>--%>
 <%--</form:form>--%>
 </body>
 </html>

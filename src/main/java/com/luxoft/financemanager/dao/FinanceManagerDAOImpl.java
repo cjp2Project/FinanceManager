@@ -3,6 +3,8 @@ package com.luxoft.financemanager.dao;
 import com.luxoft.financemanager.model.City;
 import com.luxoft.financemanager.model.Shop;
 import com.luxoft.financemanager.model.ShoppingItem;
+import com.luxoft.financemanager.model.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -29,4 +31,14 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         List<Shop> shops = session.createQuery("from Shop").list();
         return shops;
     }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where userName= :userName ");
+        query.setString("userName", userName);
+        return (User) query.uniqueResult();
+    }
+
+
 }

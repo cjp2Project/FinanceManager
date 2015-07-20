@@ -6,6 +6,7 @@
 
 	<a href="/admin/welcomePage.html">Login as ADMIN</a>
 	<br/>
+	<br/>
 	<a href="/user/welcomePage.html">Login as USER</a>
 </body>
 </html>
