@@ -1,6 +1,7 @@
 package com.luxoft.financemanager.controllers;
 
 import com.luxoft.financemanager.model.City;
+import com.luxoft.financemanager.model.Shop;
 import com.luxoft.financemanager.model.ShoppingItem;
 import com.luxoft.financemanager.service.CityService;
 import com.luxoft.financemanager.service.FinanceManagerService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,15 +27,18 @@ public class FinanceManagerController {
 
     @RequestMapping(value = "/shoplist.html", method = RequestMethod.GET)
     public String listCities(Model model) {
-        model.addAttribute("shopping_item", new ShoppingItem());
+        model.addAttribute("shop", new Shop());
+        model.addAttribute("shops", service.listShops());
         return "shoplist";
     }
 
     @RequestMapping(value = "/shoplist.html", method = RequestMethod.POST)
-    public String addShoppingItem(@ModelAttribute("shopping_item")ShoppingItem shoppingItem) {
+    public String addShoppingItem(@ModelAttribute("shopping_item") ShoppingItem shoppingItem, ModelMap model) {
         if (shoppingItem.getId() == 0) {
             this.service.addShoppingItemToDB(shoppingItem);
         }
+        model.addAttribute("shop", new Shop());
+        model.addAttribute("shops", service.listShops());
         return "shoplist";
     }
 }

@@ -2,6 +2,7 @@ package com.luxoft.financemanager.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity(name = "shopping_item")
@@ -106,5 +107,20 @@ public class ShoppingItem {
 
     public void setReceipt(byte[] receipt) {
         this.receipt = receipt;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingItem{" +
+                "id=" + id +
+                ", user=" + user +
+                ", shop=" + shop +
+                ", shoppingCategory=" + shoppingCategory +
+                ", currency=" + currency +
+                ", date=" + date +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", receipt=" + Arrays.toString(receipt) +
+                '}';
     }
 }

@@ -35,7 +35,17 @@ public class ShoppingCategory {
         return shoppingCategoryName;
     }
 
+    @Override
+    public String toString() {
+        return "ShoppingCategory{" +
+                "id=" + id +
+                ", shoppingCategoryName='" + shoppingCategoryName + '\'' +
+                ", shoppingItems=" + shoppingItems +
+                '}';
+    }
+
     public void setShoppingCategoryName(String shoppingCategoryName) {
         this.shoppingCategoryName = shoppingCategoryName;
+
     }
 }

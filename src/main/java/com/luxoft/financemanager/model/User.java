@@ -86,5 +86,16 @@ public class User {
         this.defaultReportDate = defaultReportDate;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", defaultReportDate=" + defaultReportDate +
+                ", shoppingItems=" + shoppingItems +
+                ", role=" + role +
+                '}';
+    }
 }

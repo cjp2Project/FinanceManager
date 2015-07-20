@@ -30,6 +30,7 @@ public class Shop {
     public void setShoppingItems(Collection<ShoppingItem> shoppingItems) {
         this.shoppingItems = shoppingItems;
     }
+
     public ShopBranch getShopBranch() {
         return shopBranch;
     }
@@ -60,5 +61,12 @@ public class Shop {
 
     public void setStreet(String street) {
         this.street = street;
+    }
+
+    @Override
+    public String toString() {
+        return city +
+                " " + shopBranch +
+                " " + street;
     }
 }

@@ -13,7 +13,7 @@ public class ShopBranch {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-   @Column(name = "name")
+    @Column(name = "name")
     private String branchName;
 
     @OneToMany(mappedBy = "shopBranch")
@@ -43,5 +43,8 @@ public class ShopBranch {
         this.branchName = branchName;
     }
 
-
+    @Override
+    public String toString() {
+        return branchName + "";
+    }
 }
