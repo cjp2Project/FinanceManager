@@ -1,9 +1,7 @@
 package com.luxoft.financemanager.controllers;
 
-import com.luxoft.financemanager.model.City;
 import com.luxoft.financemanager.model.Shop;
 import com.luxoft.financemanager.model.ShoppingItem;
-import com.luxoft.financemanager.service.CityService;
 import com.luxoft.financemanager.service.FinanceManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,11 +22,11 @@ public class FinanceManagerController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/shoplist.html", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/shoplist.html", method = RequestMethod.GET)
     public String listCities(Model model) {
         model.addAttribute("shop", new Shop());
         model.addAttribute("shops", service.listShops());
-        return "shoplist";
+        return "addshoppingitem";
     }
 
     @RequestMapping(value = "/shoplist.html", method = RequestMethod.POST)
@@ -39,6 +36,6 @@ public class FinanceManagerController {
         }
         model.addAttribute("shop", new Shop());
         model.addAttribute("shops", service.listShops());
-        return "shoplist";
+        return "addshoppingitem";
     }
 }
