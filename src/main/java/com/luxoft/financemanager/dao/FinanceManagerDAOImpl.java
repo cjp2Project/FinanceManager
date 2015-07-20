@@ -1,9 +1,6 @@
 package com.luxoft.financemanager.dao;
 
-import com.luxoft.financemanager.model.City;
-import com.luxoft.financemanager.model.Shop;
-import com.luxoft.financemanager.model.ShoppingItem;
-import com.luxoft.financemanager.model.User;
+import com.luxoft.financemanager.model.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,5 +37,75 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         return (User) query.uniqueResult();
     }
 
+    @Override
+    public void addCity(City city) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(city);
+    }
+
+    @Override
+    public void updateCity(City city) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(city);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<City> listCities() {
+        Session session = this.sessionFactory.getCurrentSession();
+        List<City> citiesList = session.createQuery("from city ").list();
+        return citiesList;
+    }
+
+    @Override
+    public City getCityById(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        City city = (City) session.load(City.class, new Integer(id));
+        return city;
+    }
+
+    @Override
+    public void removeCity(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        City city = (City) session.load(City.class, new Integer(id));
+        if (null != city) {
+            session.delete(city);
+        }
+    }
+
+    @Override
+    public void addCurrency(Currency currency) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(currency);
+    }
+
+    @Override
+    public void updateCurrency(Currency currency) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(currency);
+    }
+
+    @Override
+    public List<Currency> listCurrencies() {
+        Session session = this.sessionFactory.getCurrentSession();
+        List<Currency> currenciesList = session.createQuery("from Currency").list();
+        return currenciesList;
+    }
+
+    @Override
+    public Currency getCurrencyById(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Currency currency = (Currency) session.load(Currency.class, new Integer(id));
+        return currency;
+    }
+
+    @Override
+    public void removeCurrency(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Currency currency = (Currency) session.load(City.class, new Integer(id));
+        if (null != currency) {
+            session.delete(currency);
+        }
+    }
 
 }
