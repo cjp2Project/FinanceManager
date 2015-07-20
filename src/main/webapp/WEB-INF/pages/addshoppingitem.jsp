@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<c:url var="addAction" value="/user/addshoppingitemresult.html" ></c:url>
+<c:url var="addAction" value="/user/addshoppingitemresult.html"></c:url>
 <form action="${addAction}" modelAttribute="shopping_item">
     <table>
 
@@ -43,8 +43,8 @@
         </tr>
 
         <%--<tr>--%>
-            <%--<td>Date:</td>--%>
-            <%--<td><input type="text" name="date"/></td>--%>
+        <%--<td>Date:</td>--%>
+        <%--<td><input type="text" name="date"/></td>--%>
         <%--</tr>--%>
 
         <tr>
@@ -58,8 +58,8 @@
         </tr>
 
         <%--<tr>--%>
-            <%--<td>Receipt:</td>--%>
-            <%--<td><input type="text" name="receipt"/></td>--%>
+        <%--<td>Receipt:</td>--%>
+        <%--<td><input type="text" name="receipt"/></td>--%>
         <%--</tr>--%>
     </table>
     <input type="submit" value="Submit"/>

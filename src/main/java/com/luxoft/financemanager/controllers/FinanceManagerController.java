@@ -13,6 +13,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
 
 @Controller
 public class FinanceManagerController {
@@ -43,8 +47,16 @@ public class FinanceManagerController {
 
 
     @RequestMapping(value = "/user/addshoppingitemresult.html", method = RequestMethod.GET)
-    public String addShoppingItem(@ModelAttribute("shopping_item") ShoppingItem shoppingItem) {
-        shoppingItem.setReceipt(null);
+    public String addShoppingItem(@RequestParam("shop") Shop shop, @RequestParam("currency") Currency currency, @RequestParam("category") ShoppingCategory category, @RequestParam("date") Date date, @RequestParam("amount") float amount, @RequestParam("shop") String description, @RequestParam("receipt") byte[] receiptScan) {
+        ShoppingItem shoppingItem = new ShoppingItem();
+        shoppingItem.setCurrency(currency);
+        shoppingItem.setAmount(amount);
+        shoppingItem.setDate(date);
+        //shoppingItem.setUser(user);
+        shoppingItem.setShop(shop);
+        shoppingItem.setDescription(description);
+        shoppingItem.setReceipt(receiptScan);
+        shoppingItem.setShoppingCategory(category);
         if (shoppingItem.getId() == 0) {
             this.service.addShoppingItemToDB(shoppingItem);
         }
