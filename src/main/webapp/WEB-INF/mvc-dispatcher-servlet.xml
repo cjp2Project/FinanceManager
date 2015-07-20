@@ -1,62 +1,54 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:beans="http://www.springframework.org/schema/websocket" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx">
+
+    <context:component-scan base-package="com.luxoft.financemanager.controllers"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url"
-                  value="jdbc:mysql://localhost:3306/financemanagerdb"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/financemanagerdb"/>
         <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="password" value="password"/>
     </bean>
 
-    <bean id="hibernate4AnnotatedSessionFactory"
+    <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
-            <list>
-                <value>com.luxoft.financemanager.model.ShoppingItem</value>
-                <value>com.luxoft.financemanager.model.City</value>
-                <value>com.luxoft.financemanager.model.Currency</value>
-                <value>com.luxoft.financemanager.model.Shop</value>
-                <value>com.luxoft.financemanager.model.ShopBranch</value>
-                <value>com.luxoft.financemanager.model.ShoppingCategory</value>
-                <value>com.luxoft.financemanager.model.User</value>
-                <value>com.luxoft.financemanager.model.Role</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+        &lt;!&ndash;<property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-                </prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="hbm2ddl.auto">create</prop>
             </props>
-        </property>
+
+        </property>&ndash;&gt;
+
     </bean>
 
-    <bean id="financeManagerDAO" class="com.luxoft.financemanager.dao.FinanceManagerDAOImpl">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    <bean id="dbLoader" class="com.luxoft.financemanager.service.DBLoader" >
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="financeManagerService" class="com.luxoft.financemanager.service.FinanceManagerServiceImpl">
-        <property name="financeManagerDAO" ref="financeManagerDAO"></property>
-    </bean>
+    <tx:annotation-driven/>
 
-    <context:component-scan base-package="com.luxoft.financemanager.controllers"/>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <bean class="org.springframework.orm.hibernate4.HibernateTransactionManager" id="transactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>-->
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
-    </bean>
+    <!--<bean id="financeManagerDAO" class="com.luxoft.financemanager.dao.FinanceManagerDAOImpl"/>-->
+
+    <!--<bean id="financeManagerService" class="com.luxoft.financemanager.service.FinanceManagerServiceImpl"/>-->
 
 </beans>
