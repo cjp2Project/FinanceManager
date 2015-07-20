@@ -17,7 +17,7 @@
         <property name="url"
                   value="jdbc:mysql://localhost:3306/financemanagerdb"/>
         <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="password" value="password"/>
     </bean>
 
     <bean id="hibernate4AnnotatedSessionFactory"
