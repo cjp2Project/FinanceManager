@@ -37,11 +37,7 @@ public class ShoppingCategory {
 
     @Override
     public String toString() {
-        return "ShoppingCategory{" +
-                "id=" + id +
-                ", shoppingCategoryName='" + shoppingCategoryName + '\'' +
-                ", shoppingItems=" + shoppingItems +
-                '}';
+        return ""+ shoppingCategoryName;
     }
 
     public void setShoppingCategoryName(String shoppingCategoryName) {

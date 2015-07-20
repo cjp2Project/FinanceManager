@@ -34,7 +34,9 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from User where userName= :userName ");
         query.setString("userName", userName);
-        return (User) query.uniqueResult();
+        User user = (User) query.uniqueResult();
+        user.getShoppingItems().size();
+        return user;
     }
 
     @Override
@@ -90,6 +92,13 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         Session session = this.sessionFactory.getCurrentSession();
         List<Currency> currenciesList = session.createQuery("from Currency").list();
         return currenciesList;
+    }
+
+    @Override
+    public List<ShoppingCategory> listCategories() {
+        Session session = this.sessionFactory.getCurrentSession();
+        List<ShoppingCategory> categoriesList = session.createQuery("from shopping_category ").list();
+        return categoriesList;
     }
 
     @Override

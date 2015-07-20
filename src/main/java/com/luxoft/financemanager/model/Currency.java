@@ -44,10 +44,6 @@ public class Currency {
 
     @Override
     public String toString() {
-        return "Currency{" +
-                "id=" + id +
-                ", currencyName='" + currencyName + '\'' +
-                ", shoppingItems=" + shoppingItems +
-                '}';
+        return "" + currencyName ;
     }
 }

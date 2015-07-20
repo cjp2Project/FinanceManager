@@ -27,6 +27,8 @@ public interface FinanceManagerDAO {
 
     List<Currency> listCurrencies();
 
+    List<ShoppingCategory> listCategories();
+
     Currency getCurrencyById(int id);
 
     void removeCurrency(int id);

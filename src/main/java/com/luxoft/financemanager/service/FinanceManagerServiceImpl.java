@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 public class FinanceManagerServiceImpl implements FinanceManagerService {
     @Autowired
@@ -46,6 +47,7 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     }
 
     @Override
+    @Transactional
     public List<Currency> listCurrencies() {
         return this.financeManagerDAO.listCurrencies();
     }
@@ -70,8 +72,15 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
         this.financeManagerDAO.updateCity(city);
     }
 
+    @Override
+    @Transactional
+    public List<ShoppingCategory> listCategories() {
+        return this.financeManagerDAO.listCategories();
+    }
+
     @SuppressWarnings("unchecked")
     @Override
+    @Transactional
     public List<City> listCities() {
         return this.financeManagerDAO.listCities();
     }

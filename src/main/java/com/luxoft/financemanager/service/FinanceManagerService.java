@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface FinanceManagerService {
     void addShoppingItemToDB(ShoppingItem shoppingItem);
+
     public User getUserByUserName(String userName);
 
     List<Shop> listShops();
@@ -24,7 +25,10 @@ public interface FinanceManagerService {
 
     void updateCity(City p);
 
+    List<ShoppingCategory> listCategories();
+
     List<City> listCities();
+
     City getCityById(int id);
 
     void removeCity(int id);
