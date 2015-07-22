@@ -32,5 +32,10 @@ public interface FinanceManagerDAO {
     Currency getCurrencyById(int id);
 
     void removeCurrency(int id);
+
+    public ShoppingCategory getShoppingCategoryById(int id);
+
+    public Shop getShopById(int shopId);
+
 }
 
