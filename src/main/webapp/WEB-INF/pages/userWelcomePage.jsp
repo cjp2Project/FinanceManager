@@ -6,7 +6,25 @@
 
 <html>
 <head>
+
     <title>login result</title>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href="<c:url value="/resources/static/css/demo.css" />" rel="stylesheet">
+
+
+
 </head>
 <body>
 <a href="<c:url value="/j_spring_security_logout" />">Logout</a>
@@ -16,13 +34,15 @@
 
 <div align="center">
 
+
     <h3>Shopping list</h3>
-    <table border="1">
-        <th>Shop</th>
-        <th>Shop Address</th>
-        <th>Items</th>
-        <th>Amount</th>
-        <th>Currency</th>
+    <table class = "history" border="1">
+
+        <th class = "shop">Shop</th>
+        <th class = "shop_adress">Shop Address</th>
+        <th class = "items">Items</th>
+        <th class = "amount">Amount</th>
+        <th class = "currency">Currency</th>
         <core:forEach var="shoppingItem" items="${user.shoppingItems}">
             <tr>
                 <td>${shoppingItem.shop.shopBranch.branchName}</td>
