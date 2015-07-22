@@ -6,8 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<c:url var="addAction" value="/user/addshoppingitemresult.html"></c:url>
-<form action="${addAction}" modelAttribute="shopping_item">
+<form action="/user/addshoppingitemresult.html" method="post" modelAttribute="shopping_item">
     <table>
 
         <tr>

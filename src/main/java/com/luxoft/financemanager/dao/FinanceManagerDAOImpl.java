@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public class FinanceManagerDAOImpl implements FinanceManagerDAO {
     private SessionFactory sessionFactory;
@@ -117,4 +118,29 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         }
     }
 
+    @Override
+    public Shop getShop(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Shop shop = (Shop) session.load(Shop.class, new Integer(id));
+        if (null != shop) {
+            session.delete(shop);
+        }
+        return shop;
+    }
+
+    @Override
+    public ShoppingItem getShoppingItemByID(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        ShoppingItem shoppingItem = (ShoppingItem) session.load(ShoppingItem.class, new Integer(id));
+        shoppingItem.getShop().getShoppingItems().size();
+        return shoppingItem;
+    }
+
+    public void removeShoppingItemByID(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ShoppingItem shoppingItem = (ShoppingItem) session.load(ShoppingItem.class, new Integer(id));
+        if (null != shoppingItem) {
+            session.delete(shoppingItem);
+        }
+    }
 }

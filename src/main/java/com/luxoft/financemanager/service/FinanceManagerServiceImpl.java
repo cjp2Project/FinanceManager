@@ -103,4 +103,21 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
         this.financeManagerDAO.removeCity(id);
     }
 
+    @Override
+    public Shop getShop(int id) {
+        return financeManagerDAO.getShop(id);
+    }
+
+    @Override
+    @Transactional
+    public ShoppingItem getShoppingItemByID(int id) {
+        return financeManagerDAO.getShoppingItemByID(id);
+    }
+
+    @Override
+    @Transactional
+    public void removeShoppingItemByID(int id) {
+        financeManagerDAO.removeShoppingItemByID(id);
+    }
+
 }

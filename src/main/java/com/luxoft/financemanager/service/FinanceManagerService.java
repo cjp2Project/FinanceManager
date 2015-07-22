@@ -32,4 +32,9 @@ public interface FinanceManagerService {
     City getCityById(int id);
 
     void removeCity(int id);
+
+    Shop getShop(int id);
+    public ShoppingItem getShoppingItemByID(int id);
+
+    void removeShoppingItemByID(int id);
 }
