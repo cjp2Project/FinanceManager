@@ -38,5 +38,10 @@ public interface FinanceManagerDAO {
     public ShoppingItem getShoppingItemByID(int id);
 
     void removeShoppingItemByID(int id);
+
+    public ShoppingCategory getShoppingCategoryById(int id);
+
+    public Shop getShopById(int shopId);
+
 }
 

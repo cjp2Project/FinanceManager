@@ -111,16 +111,6 @@ public class ShoppingItem {
 
     @Override
     public String toString() {
-        return "ShoppingItem{" +
-                "id=" + id +
-                ", user=" + user +
-                ", shop=" + shop +
-                ", shoppingCategory=" + shoppingCategory +
-                ", currency=" + currency +
-                ", date=" + date +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
-                ", receipt=" + Arrays.toString(receipt) +
-                '}';
+        return description + ", price: " + amount + "[" + currency.getCurrencyName() +"]";
     }
 }

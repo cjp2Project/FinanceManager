@@ -37,6 +37,7 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         query.setString("userName", userName);
         User user = (User) query.uniqueResult();
         user.getShoppingItems().size();
+        user.getRole().toString();
         return user;
     }
 
@@ -99,6 +100,7 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
     public List<ShoppingCategory> listCategories() {
         Session session = this.sessionFactory.getCurrentSession();
         List<ShoppingCategory> categoriesList = session.createQuery("from shopping_category ").list();
+        categoriesList.size();
         return categoriesList;
     }
 
@@ -116,6 +118,19 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         if (null != currency) {
             session.delete(currency);
         }
+    }
+
+    public ShoppingCategory getShoppingCategoryById(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ShoppingCategory shoppingCategory = (ShoppingCategory) session.load(ShoppingCategory.class, new Integer(id));
+        return shoppingCategory;
+    }
+
+    @Override
+    public Shop getShopById(int shopId) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Shop shop = (Shop) session.load(Shop.class, new Integer(shopId));
+        return shop;
     }
 
     @Override

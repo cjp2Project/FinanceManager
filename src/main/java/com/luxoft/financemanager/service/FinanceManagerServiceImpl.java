@@ -84,6 +84,12 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
         return this.financeManagerDAO.listCategories();
     }
 
+    @Override
+    @Transactional
+    public ShoppingCategory getShoppingCategoryById(int id) {
+        return this.financeManagerDAO.getShoppingCategoryById(id);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     @Transactional
@@ -101,6 +107,12 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     @Transactional
     public void removeCity(int id) {
         this.financeManagerDAO.removeCity(id);
+    }
+
+    @Override
+    @Transactional
+    public Shop getShopById(int shopId) {
+        return this.financeManagerDAO.getShopById(shopId);
     }
 
     @Override

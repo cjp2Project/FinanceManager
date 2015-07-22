@@ -18,6 +18,7 @@
 
     <h3>Shopping list</h3>
     <table border="1">
+        <th>Shop ID</th>
         <th>Shop</th>
         <th>Shop Address</th>
         <th>Items</th>
@@ -25,11 +26,14 @@
         <th>Currency</th>
         <core:forEach var="shoppingItem" items="${user.shoppingItems}">
             <tr>
+                <td>${shoppingItem.id}</td>
                 <td>${shoppingItem.shop.shopBranch.branchName}</td>
                 <td>${shoppingItem.shop.street}</td>
                 <td>${shoppingItem.description}</td>
                 <td>${shoppingItem.amount}</td>
                 <td>${shoppingItem.currency.currencyName}</td>
+                <td><a href="<c:url value='/delete-shopping-item${shoppingItem.id}'/>">delete</a></td>
+                <td><a href="<c:url value='/edit-shopping-item${shoppingItem.id}'/>">edit</a></td>
             </tr>
         </core:forEach>
     </table>
