@@ -27,9 +27,18 @@ public interface FinanceManagerService {
 
     List<ShoppingCategory> listCategories();
 
+    ShoppingCategory getShoppingCategoryById(int id);
+
     List<City> listCities();
 
     City getCityById(int id);
 
     void removeCity(int id);
+
+    Shop getShop(int id);
+    public ShoppingItem getShoppingItemByID(int id);
+
+    void removeShoppingItemByID(int id);
+
+    Shop getShopById(int shopId);
 }

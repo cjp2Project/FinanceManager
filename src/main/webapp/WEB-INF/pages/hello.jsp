@@ -11,6 +11,8 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link href="<c:url value="/resources/static/css/demo.css" />" rel="stylesheet">
 </head>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
 <body>
 
 

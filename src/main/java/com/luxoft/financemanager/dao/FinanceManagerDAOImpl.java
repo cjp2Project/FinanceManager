@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public class FinanceManagerDAOImpl implements FinanceManagerDAO {
     private SessionFactory sessionFactory;
@@ -36,6 +37,7 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         query.setString("userName", userName);
         User user = (User) query.uniqueResult();
         user.getShoppingItems().size();
+        user.getRole().toString();
         return user;
     }
 
@@ -98,6 +100,7 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
     public List<ShoppingCategory> listCategories() {
         Session session = this.sessionFactory.getCurrentSession();
         List<ShoppingCategory> categoriesList = session.createQuery("from shopping_category ").list();
+        categoriesList.size();
         return categoriesList;
     }
 
@@ -117,4 +120,42 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         }
     }
 
+    public ShoppingCategory getShoppingCategoryById(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ShoppingCategory shoppingCategory = (ShoppingCategory) session.load(ShoppingCategory.class, new Integer(id));
+        return shoppingCategory;
+    }
+
+    @Override
+    public Shop getShopById(int shopId) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Shop shop = (Shop) session.load(Shop.class, new Integer(shopId));
+        return shop;
+    }
+
+    @Override
+    public Shop getShop(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Shop shop = (Shop) session.load(Shop.class, new Integer(id));
+        if (null != shop) {
+            session.delete(shop);
+        }
+        return shop;
+    }
+
+    @Override
+    public ShoppingItem getShoppingItemByID(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        ShoppingItem shoppingItem = (ShoppingItem) session.load(ShoppingItem.class, new Integer(id));
+        shoppingItem.getShop().getShoppingItems().size();
+        return shoppingItem;
+    }
+
+    public void removeShoppingItemByID(int id) {
+        Session session = this.sessionFactory.getCurrentSession();
+        ShoppingItem shoppingItem = (ShoppingItem) session.load(ShoppingItem.class, new Integer(id));
+        if (null != shoppingItem) {
+            session.delete(shoppingItem);
+        }
+    }
 }
