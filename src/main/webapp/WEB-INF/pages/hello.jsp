@@ -28,8 +28,8 @@
 		</a>
 
 
-		<h1>Finance Manager</h1>
-		<h2>The spending money supporter</h2>
+		<h1>${message}</h1>
+		<h2>${intro}</h2>
 
 
 	</div>
