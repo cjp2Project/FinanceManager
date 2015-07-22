@@ -1,0 +1,66 @@
+
+button{
+    background-color: lightgray;
+    width: 200px;
+    height: 50px;
+    float: right;
+    padding: 2px;
+
+ }
+
+a:link {
+    color: black;
+}
+
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 800px;
+    border-collapse:
+    collapse; border-spacing: inherit;
+    table-layout: fixed;
+}
+
+td, th {
+    border: 1px solid darkgray; /* No more visible border */
+    height: 30px;
+    transition: all 0.3s;  /* Simple transition for hover effect */
+    overflow: hidden;
+}
+
+th {
+    background: #DFDFDF;  /* Darken header a bit */
+    font-weight: bold;
+    text-align: center;
+
+}
+
+td {
+    background: #FAFAFA;
+    text-align: center;
+}
+
+/* Cells in even rows (2,4,6...) are one color */
+tr:nth-child(even) td { background: #F1F1F1; }
+
+/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */
+tr:nth-child(odd) td { background: #FEFEFE; }
+
+tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
+
+
+th.shop, th.shop_adress {
+    width: 10%
+}
+th.items {
+    width: 35%;
+}
+th.currency{
+    width: 10%;
+}
+th.amount{
+    width:15%;
+}
+th.delete, th.edit{
+    width:10%;
+}

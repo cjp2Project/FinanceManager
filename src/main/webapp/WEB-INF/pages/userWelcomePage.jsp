@@ -42,6 +42,8 @@
         <th class = "items">Items</th>
         <th class = "amount">Amount</th>
         <th class = "currency">Currency</th>
+        <th class = "delete">Delete</th>
+        <th class = "edit">Edit</th>
         <core:forEach var="shoppingItem" items="${user.shoppingItems}">
             <tr>
                 <td>${shoppingItem.shop.shopBranch.branchName}</td>
