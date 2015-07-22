@@ -10,8 +10,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<head>
-    <title>Add shopping item</title>
+<body>
+<c:url var="addAction" value="/user/addshoppingitemresult.html" ></c:url>
+<form action="${addAction}" modelAttribute="shopping_item">
     <table>
         <tr>
             <td>User name</td>
@@ -60,35 +61,14 @@
                 </td>
             </tr>
 
-            <tr>
-                <td>Select currency:</td>
-                <td>
-                    <select name="currency">
-                        <c:forEach var="currency" items="${currencies}">
-                            <option value="${currency.id}">${currency}</option>
-                        </c:forEach>
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Enter amount of money spent:</td>
-                <td><input type="text" name="amount"/></td>s
-            </tr>
-
-            <tr>
-                <td>Description (e.g.: items bought):</td>
-                <td><input type="text" name="description"/></td>s
-            </tr>
-
-
-        </table>
-
-        <input type="submit" value="add"/>
-    </form>
-
-</head>
-<body>
-
+        <%--<tr>--%>
+            <%--<td>Receipt:</td>--%>
+            <%--<td><input type="text" name="receipt"/></td>--%>
+        <%--</tr>--%>
+    </table>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
 </body>
 </html>
