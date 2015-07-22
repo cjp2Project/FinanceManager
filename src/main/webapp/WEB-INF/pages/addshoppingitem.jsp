@@ -50,6 +50,7 @@
                 </td>
             </tr>
 
+            
             <tr>
                 <td>Select shopping category:</td>
                 <td>

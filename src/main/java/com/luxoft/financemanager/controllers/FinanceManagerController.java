@@ -31,6 +31,7 @@ public class FinanceManagerController {
         this.service = service;
     }
 
+
     @RequestMapping(value = "/user/addshoppingitem.html", method = RequestMethod.GET)
     public String addShoppingItem(Model model, Principal principal) {
         User user = service.getUserByUserName(principal.getName());
