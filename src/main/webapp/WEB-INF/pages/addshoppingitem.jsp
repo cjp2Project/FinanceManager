@@ -10,9 +10,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<body>
-<c:url var="addAction" value="/user/addshoppingitemresult.html" ></c:url>
-<form action="${addAction}" modelAttribute="shopping_item">
+<head>
+    <title>Add shopping item</title>
     <table>
         <tr>
             <td>User name</td>
@@ -21,7 +20,7 @@
 
         <tr>
             <td>user email:</td>
-            <td>${user.role.roleName}</td>
+            <td>${user.email}</td>
         </tr>
     </table>
 
@@ -50,7 +49,6 @@
                 </td>
             </tr>
 
-            
             <tr>
                 <td>Select shopping category:</td>
                 <td>
@@ -62,14 +60,33 @@
                 </td>
             </tr>
 
-        <%--<tr>--%>
-            <%--<td>Receipt:</td>--%>
-            <%--<td><input type="text" name="receipt"/></td>--%>
-        <%--</tr>--%>
-    </table>
-    <input type="submit" value="Submit"/>
-</form>
-</body>
-</html>
+            <tr>
+                <td>Select currency:</td>
+                <td>
+                    <select name="currency">
+                        <c:forEach var="currency" items="${currencies}">
+                            <option value="${currency.id}">${currency}</option>
+                        </c:forEach>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Enter amount of money spent:</td>
+                <td><input type="text" name="amount"/></td>s
+            </tr>
+
+            <tr>
+                <td>Description (e.g.: items bought):</td>
+                <td><input type="text" name="description"/></td>s
+            </tr>
+        </table>
+
+        <input type="submit" value="add"/>
+    </form>
+
+</head>
+<body>
+
 </body>
 </html>
