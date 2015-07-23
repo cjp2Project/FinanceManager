@@ -25,6 +25,7 @@ public class FinanceManagerServiceImplTest {
         financeManagerServiceImpl.setFinanceManagerDAO(financeManagerDAO);
     }
 
+    // Test comment
     @Test
     public void shouldReturnNullWhenEmptyUserNamePassedAsParameter() {
 
