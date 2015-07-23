@@ -41,4 +41,6 @@ public interface FinanceManagerService {
     void removeShoppingItemByID(int id);
 
     Shop getShopById(int shopId);
+
+    void updateShoppingItemToDB(ShoppingItem shoppingItem);
 }

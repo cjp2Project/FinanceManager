@@ -16,6 +16,11 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     public void setFinanceManagerDAO(FinanceManagerDAO financeManagerDAO) {
         this.financeManagerDAO = financeManagerDAO;
     }
+    @Override
+    @Transactional
+    public void updateShoppingItemToDB(ShoppingItem shoppingItem) {
+        financeManagerDAO.updateShoppingItemToDB(shoppingItem);
+    }
 
     @Override
     @Transactional
