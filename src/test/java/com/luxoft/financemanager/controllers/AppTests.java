@@ -25,6 +25,7 @@ public class AppTests {
     @Autowired
     protected WebApplicationContext wac;
 
+
     @Before
     public void setup() {
         this.mockMvc = webAppContextSetup(this.wac).build();
