@@ -93,7 +93,7 @@ public class FinanceManagerController {
         item.setShop(shop);
 
         // date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date shoppingItemDate = null;
         try {
             shoppingItemDate = dateFormat.parse(date);
@@ -147,7 +147,7 @@ public class FinanceManagerController {
         item.setShop(shop);
 
         // date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date shoppingItemDate = null;
         try {
             shoppingItemDate = dateFormat.parse(date);

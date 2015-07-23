@@ -34,7 +34,7 @@
             </tr>
 
             <tr>
-                <td>Enter shopping date (yyyy/MM/dd):</td>
+                <td>Enter shopping date (yyyy-MM-dd):</td>
                 <td><input type="text" name="date"/></td>
             </tr>
 
