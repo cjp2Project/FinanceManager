@@ -1,11 +1,13 @@
 package com.luxoft.financemanager.dao;
 
+import com.luxoft.financemanager.comparators.ShoppingItemComparator;
 import com.luxoft.financemanager.model.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -22,6 +24,12 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         session.persist(shoppingItem);
     }
 
+    @Override
+    public void updateShoppingItemToDB(ShoppingItem shoppingItem) {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(shoppingItem);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public List<Shop> listShops() {
@@ -36,7 +44,8 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         Query query = session.createQuery("from User where userName= :userName ");
         query.setString("userName", userName);
         User user = (User) query.uniqueResult();
-        user.getShoppingItems().size();
+
+        Collections.sort(user.getShoppingItems(), new ShoppingItemComparator());
         user.getRole().toString();
         return user;
     }

@@ -1,10 +1,7 @@
 package com.luxoft.financemanager.model;
 
 import javax.persistence.*;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 public class User {
@@ -24,7 +21,7 @@ public class User {
     private Date defaultReportDate;
 
     @OneToMany(mappedBy = "user")
-    private Collection<ShoppingItem> shoppingItems = new ArrayList<ShoppingItem>();
+    private List<ShoppingItem> shoppingItems = new ArrayList<ShoppingItem>();
 
     @ManyToOne
     @JoinColumn(name = "role_id")
@@ -38,11 +35,11 @@ public class User {
         this.role = role;
     }
 
-    public Collection<ShoppingItem> getShoppingItems() {
+    public List<ShoppingItem> getShoppingItems() {
         return shoppingItems;
     }
 
-    public void setShoppingItems(Collection<ShoppingItem> shoppingItems) {
+    public void setShoppingItems(List<ShoppingItem> shoppingItems) {
         this.shoppingItems = shoppingItems;
     }
 

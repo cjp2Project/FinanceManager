@@ -43,5 +43,7 @@ public interface FinanceManagerDAO {
 
     public Shop getShopById(int shopId);
 
+    void updateShoppingItemToDB(ShoppingItem shoppingItem);
+
 }
 

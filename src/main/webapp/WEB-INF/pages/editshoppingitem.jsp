@@ -26,24 +26,28 @@
 
     <h2>Add shopping item</h2>
 
-    <form method="post" action="/user/afteraddingItem.html">
+    <form method="post" action="/user/aftereditingItem.html">
         <table>
             <tr>
                 <td>User id:</td>
                 <td><input type="number" name="userId" value="${user.id}" disabled/></td>
             </tr>
+            <input type="hidden" name="shopping_item_id" value="${shopping_item_id}">
 
             <tr>
                 <td>Enter shopping date (yyyy/MM/dd):</td>
-                <td><input type="text" name="date"/></td>
+                <td><input type="text" value="${shopping_item.date}" name="date"/></td>
             </tr>
 
             <tr>
                 <td>Select shop:</td>
                 <td>
                     <select name="shop">
+                        <option value="${shopping_item.shop.id}" selected>${shopping_item.shop}</option>
                         <c:forEach var="shop" items="${shops}">
-                            <option value="${shop.id}">${shop}</option>
+                            <c:if test="${shop.id ne shopping_item.shop.id}">
+                                <option value="${shop.id}">${shop}</option>
+                            </c:if>
                         </c:forEach>
                     </select>
                 </td>
@@ -53,8 +57,12 @@
                 <td>Select shopping category:</td>
                 <td>
                     <select name="shoppingCategory">
+                        <option value="${shopping_item.shoppingCategory.id}"
+                                selected>${shopping_item.shoppingCategory}</option>
                         <c:forEach var="category" items="${shoppingCategories}">
-                            <option value="${category.id}">${category}</option>
+                            <c:if test="${category.id ne shopping_item.shoppingCategory.id}">
+                                <option value="${category.id}">${category}</option>
+                            </c:if>
                         </c:forEach>
                     </select>
                 </td>
@@ -64,8 +72,11 @@
                 <td>Select currency:</td>
                 <td>
                     <select name="currency">
+                        <option value="${shopping_item.currency.id}" selected>${shopping_item.currency}</option>
                         <c:forEach var="currency" items="${currencies}">
-                            <option value="${currency.id}">${currency}</option>
+                            <c:if test="${currency.id ne shopping_item.currency.id}">
+                                <option value="${currency.id}">${currency}</option>
+                            </c:if>
                         </c:forEach>
                     </select>
                 </td>
@@ -73,20 +84,20 @@
 
             <tr>
                 <td>Enter amount of money spent:</td>
-                <td><input type="text" name="amount"/></td>s
+                <td><input type="text" name="amount" value="${shopping_item.amount}"/></td>
+                s
             </tr>
 
             <tr>
                 <td>Description (e.g.: items bought):</td>
-                <td><input type="text" name="description"/></td>s
+                <td><input type="text" name="description" value="${shopping_item.description}"/></td>
+                s
             </tr>
         </table>
 
-        <input type="submit" value="add"/>
+        <input type="submit" value="edit"/>
     </form>
 
 </head>
-<body>
-
 </body>
 </html>

@@ -34,6 +34,21 @@ public class FinanceManagerController {
         return "redirect:/user/welcomePage.html";
     }
 
+    @RequestMapping(value = {"/editshoppingitem{id}"}, method = RequestMethod.GET)
+    public String updateShoppingItem(@PathVariable String id, Model model, Principal principal) {
+        ShoppingItem shoppingItem = service.getShoppingItemByID(Integer.parseInt(id));
+
+        User user = service.getUserByUserName(principal.getName());
+        model.addAttribute("shopping_item", shoppingItem);
+        model.addAttribute("shopping_item_id", id);
+        model.addAttribute("user", user);
+        model.addAttribute("shops", service.listShops());
+        model.addAttribute("shoppingCategories", service.listCategories());
+        model.addAttribute("currencies", service.listCurrencies());
+
+        return "editshoppingitem";
+    }
+
     @RequestMapping(value = "/user/addshoppingitem.html", method = RequestMethod.GET)
     public String addShoppingItem(Model model, Principal principal) {
         User user = service.getUserByUserName(principal.getName());
@@ -54,9 +69,9 @@ public class FinanceManagerController {
                                                 @RequestParam("shop") String shopId,
                                                 @RequestParam("date") String date,
                                                 @RequestParam("description") String description
+
     ) {
         ShoppingItem item = new ShoppingItem();
-
         // service.removeShoppingItemByID(Integer.parseInt(id));
         // user
         item.setUser(service.getUserByUserName(principal.getName()));
@@ -95,22 +110,62 @@ public class FinanceManagerController {
 
         service.addShoppingItemToDB(item);
 
-        ModelAndView model = new ModelAndView("afteraddingshoppingitemstatus");
+        ModelAndView model = new ModelAndView("redirect:welcomePage.html");
 
         return model;
     }
 
-    @RequestMapping(value = {"/edit-shopping-item{id}"}, method = RequestMethod.GET)
-    public String updateShoppingItem(@PathVariable String id) {
-        return "";
-    }
+    @RequestMapping(value = "/user/aftereditingItem", method = RequestMethod.POST)
+    public ModelAndView afterEditingShoppingItem(Principal principal,
+                                                 @RequestParam("shoppingCategory") String shoppingCategoryId,
+                                                 @RequestParam("currency") String currencyId,
+                                                 @RequestParam("amount") String amount,
+                                                 @RequestParam("shop") String shopId,
+                                                 @RequestParam("date") String date,
+                                                 @RequestParam("description") String description,
+                                                 @RequestParam("shopping_item_id") String shoppingItemId
+    ) {
+        ShoppingItem item = service.getShoppingItemByID(Integer.parseInt(shoppingItemId));
+        // service.removeShoppingItemByID(Integer.parseInt(id));
+        // user
+        item.setUser(service.getUserByUserName(principal.getName()));
 
-    @RequestMapping(value = "/user/addshoppingitemresult.html", method = RequestMethod.GET)
-    public String addShoppingItem(@ModelAttribute("shopping_item") ShoppingItem shoppingItem) {
-        shoppingItem.setReceipt(null);
-        if (shoppingItem.getId() == 0) {
-            this.service.addShoppingItemToDB(shoppingItem);
+        // shopping category
+        ShoppingCategory shoppingCategory = service.getShoppingCategoryById(Integer.parseInt(shoppingCategoryId));
+        item.setShoppingCategory(shoppingCategory);
+
+        // currency
+        Currency currency = service.getCurrencyById(Integer.parseInt(currencyId));
+        item.setCurrency(currency);
+
+        // amount
+        float cash = Float.parseFloat(amount);
+        item.setAmount(cash);
+
+        // shop
+        Shop shop = service.getShopById(Integer.parseInt(shopId));
+        item.setShop(shop);
+
+        // date
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date shoppingItemDate = null;
+        try {
+            shoppingItemDate = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        return "addshoppingitemresult";
+        item.setDate(shoppingItemDate);
+
+        // description
+        item.setDescription(description);
+
+        // receipt -> null so far
+        item.setReceipt(null);
+
+        service.updateShoppingItemToDB(item);
+
+        ModelAndView model = new ModelAndView("redirect:welcomePage.html");
+
+        return model;
     }
 }

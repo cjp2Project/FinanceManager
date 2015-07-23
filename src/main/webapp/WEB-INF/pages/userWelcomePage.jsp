@@ -52,7 +52,7 @@
                 <td>${shoppingItem.amount}</td>
                 <td>${shoppingItem.currency.currencyName}</td>
                 <td><a href="<c:url value='/delete-shopping-item${shoppingItem.id}'/>">delete</a></td>
-                <td><a href="<c:url value='/edit-shopping-item${shoppingItem.id}'/>">edit</a></td>
+                <td><a href="<c:url value='/editshoppingitem${shoppingItem.id}'/>">edit</a></td>
             </tr>
         </core:forEach>
     </table>
