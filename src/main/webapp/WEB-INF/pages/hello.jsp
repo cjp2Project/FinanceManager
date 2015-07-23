@@ -10,6 +10,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link href="<c:url value="/resources/static/css/demo.css" />" rel="stylesheet">
+	<link href="<c:url value="/resources/static/css/menu.css" />" rel="stylesheet">
+	<script src="<c:url value="/resources/static/js/menu.js" />"></script>
+
+
+	<div id='cssmenu'>
+		<ul>
+			<li class='rightside'><a href="/user/welcomePage.html"><span>Login as user</span></a></li>
+			<li class='rightside'><a href="/admin/welcomePage.html"><span>Login as admin</span></a></li>
+		</ul>
+	</div>
+
 </head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -19,17 +30,9 @@
 <div class="container">
 	<div class="jumbotron">
 
-		<a href="/user/welcomePage.html">
-			<button>Login as User</button>
-		</a>
 
-		<a href="/admin/welcomePage.html">
-			<button>Login as Admin</button>
-		</a>
-
-
-		<h1>Finance Manager</h1>
-		<h2>The spending money supporter</h2>
+		<h1>${message}</h1>
+		<h2>${intro}</h2>
 
 
 	</div>

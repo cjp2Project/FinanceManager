@@ -49,18 +49,23 @@ tr:nth-child(odd) td { background: #FEFEFE; }
 tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */
 
 
-th.shop, th.shop_adress {
+th.shop {
     width: 10%
 }
+
+th.shop_adress {
+    width: 15%
+}
+
 th.items {
-    width: 35%;
+    width: 25%;
 }
 th.currency{
-    width: 10%;
+    width: 9%;
 }
-th.amount{
-    width:15%;
+th.amount, th.date{
+    width:12%;
 }
 th.delete, th.edit{
-    width:10%;
+    width:8%;
 }
