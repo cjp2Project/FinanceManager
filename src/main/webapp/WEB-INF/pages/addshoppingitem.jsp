@@ -99,10 +99,10 @@
         </table>
 <br>
 
-<button>Submit
-    <input type="submit" value="submit"/>
+        <button>Add
+            <input type="submit" hidden/>
 
-</button>
+        </button>
 
 
     </form>
