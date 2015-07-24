@@ -35,7 +35,7 @@
             <input type="hidden" name="shopping_item_id" value="${shopping_item_id}">
 
             <tr>
-                <td>Enter shopping date (yyyy/MM/dd):</td>
+                <td>Enter shopping date (yyyy-MM-dd):</td>
                 <td><input type="text" value="${shopping_item.date}" name="date"/></td>
             </tr>
 

@@ -28,13 +28,13 @@ public class FinanceManagerController {
         this.service = service;
     }
 
-    @RequestMapping(value = {"/delete-shopping-item{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/user/delete-shopping-item{id}"}, method = RequestMethod.GET)
     public String deleteShoppingItem(@PathVariable String id) {
         service.removeShoppingItemByID(Integer.parseInt(id));
         return "redirect:/user/welcomePage.html";
     }
 
-    @RequestMapping(value = {"/editshoppingitem{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/user/editshoppingitem{id}"}, method = RequestMethod.GET)
     public String updateShoppingItem(@PathVariable String id, Model model, Principal principal) {
         ShoppingItem shoppingItem = service.getShoppingItemByID(Integer.parseInt(id));
 
