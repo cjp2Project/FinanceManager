@@ -46,6 +46,10 @@
 
     <h2>Add item to the shopping list</h2>
 
+    <c:if test="${not empty errorMessage}">
+        <c:out value="${errorMessage}"/>
+    </c:if>
+
     <form method="post" action="/user/afteraddingItem.html">
         <table>
 

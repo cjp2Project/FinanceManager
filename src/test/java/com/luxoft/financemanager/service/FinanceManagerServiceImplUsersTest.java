@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by bszewczyk on 2015-07-22.
  */
-public class FinanceManagerServiceImplTest {
+public class FinanceManagerServiceImplUsersTest {
 
     private FinanceManagerDAO financeManagerDAO;
     private String userName;
@@ -25,7 +25,6 @@ public class FinanceManagerServiceImplTest {
         financeManagerServiceImpl.setFinanceManagerDAO(financeManagerDAO);
     }
 
-    // Test comment
     @Test
     public void shouldReturnNullWhenEmptyUserNamePassedAsParameter() {
 
@@ -36,7 +35,7 @@ public class FinanceManagerServiceImplTest {
     }
 
     @Test
-    public void shouldReturnNullWheNullAsUserNamePassedAsParameter() {
+    public void shouldReturnNullWhenNullAsUserNamePassedAsParameter() {
         String userName = null;
         when(financeManagerDAO.getUserByUserName(userName)).thenReturn(null);
 
@@ -61,4 +60,6 @@ public class FinanceManagerServiceImplTest {
 
         assertNull("User not found", financeManagerServiceImpl.getUserByUserName(nonExistingUserName));
     }
+
+
 }
