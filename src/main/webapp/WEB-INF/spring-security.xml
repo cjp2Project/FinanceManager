@@ -12,6 +12,13 @@
     <http auto-config="true">
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN"/>
         <intercept-url pattern="/user/*" access="ROLE_USER"/>
+        <form-login
+            login-page="/login"
+            default-target-url="/user/userWelcomePage"
+            authentication-failure-url="/login"
+            username-parameter="username"
+            password-parameter="password"
+                />
         <logout logout-success-url="/" />
     </http>
 
@@ -23,5 +30,4 @@
             </user-service>
         </authentication-provider>
     </authentication-manager>
-
 </beans:beans>
