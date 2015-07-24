@@ -3,10 +3,13 @@ package com.luxoft.financemanager.dao;
 import com.luxoft.financemanager.comparators.ShoppingItemComparator;
 import com.luxoft.financemanager.model.*;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import sun.util.calendar.BaseCalendar;
 
+import java.sql.Date;
 import java.util.Collections;
 import java.util.List;
 
@@ -166,5 +169,15 @@ public class FinanceManagerDAOImpl implements FinanceManagerDAO {
         if (null != shoppingItem) {
             session.delete(shoppingItem);
         }
+    }
+
+    @Override
+    public List<Object[]> getUserShoppingCategoriesByDate(int id, String fromDate, String toDate) {
+        Session session = this.sessionFactory.getCurrentSession();
+        SQLQuery query = session.createSQLQuery("select shopping_category.name, sum(shopping_item.amount) from shopping_category inner join " +
+                "shopping_item on shopping_category.id = shopping_item.shopping_category_id " +
+                "where user_id=" + id + " and date(shopping_item.date) between '2000-01-01' and '2020-01-01' group by shopping_category.id");
+        List<Object[]> categories = query.list();
+        return categories;
     }
 }

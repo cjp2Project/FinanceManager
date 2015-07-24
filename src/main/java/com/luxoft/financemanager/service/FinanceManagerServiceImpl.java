@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -16,6 +17,7 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     public void setFinanceManagerDAO(FinanceManagerDAO financeManagerDAO) {
         this.financeManagerDAO = financeManagerDAO;
     }
+
     @Override
     @Transactional
     public void updateShoppingItemToDB(ShoppingItem shoppingItem) {
@@ -136,5 +138,9 @@ public class FinanceManagerServiceImpl implements FinanceManagerService {
     public void removeShoppingItemByID(int id) {
         financeManagerDAO.removeShoppingItemByID(id);
     }
-
+    @Override
+    @Transactional
+    public List<Object[]> getUserShoppingCategoriesByDate(int id, String fromDate, String toDate) {
+        return financeManagerDAO.getUserShoppingCategoriesByDate(id, fromDate, toDate);
+    }
 }

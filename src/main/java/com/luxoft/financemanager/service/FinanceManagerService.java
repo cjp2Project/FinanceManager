@@ -2,6 +2,7 @@ package com.luxoft.financemanager.service;
 
 import com.luxoft.financemanager.model.*;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface FinanceManagerService {
@@ -43,4 +44,5 @@ public interface FinanceManagerService {
     Shop getShopById(int shopId);
 
     void updateShoppingItemToDB(ShoppingItem shoppingItem);
+     List<Object[]> getUserShoppingCategoriesByDate(int id, String fromDate, String toDate);
 }

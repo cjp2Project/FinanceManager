@@ -2,6 +2,7 @@ package com.luxoft.financemanager.dao;
 
 import com.luxoft.financemanager.model.*;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface FinanceManagerDAO {
@@ -44,6 +45,8 @@ public interface FinanceManagerDAO {
     public Shop getShopById(int shopId);
 
     void updateShoppingItemToDB(ShoppingItem shoppingItem);
+
+    public List<Object[]> getUserShoppingCategoriesByDate(int id, String fromDate, String toDate);
 
 }
 

@@ -41,7 +41,7 @@
     <ul>
         <li class='active'><a href="/user/welcomePage.html"><span>Spends list</span></a></li>
         <li><a href="/user/addshoppingitem.html"><span>Add item</span></a></li>
-        <li><a href='#'><span>View report</span></a></li>
+        <li><a href=/user/viewreport${user.id}><span>View report</span></a></li>
         <li class='rightside'><a href="<c:url value="/j_spring_security_logout" />"><span>Logout</span></a></li>
     </ul>
 </div>

@@ -1,25 +1,22 @@
 package com.luxoft.financemanager.controllers;
 
+import com.luxoft.financemanager.model.Currency;
+import com.luxoft.financemanager.model.Shop;
 import com.luxoft.financemanager.model.*;
+import com.luxoft.financemanager.model.ShoppingItem;
 import com.luxoft.financemanager.service.FinanceManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.security.Principal;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
 
 @Controller
 public class FinanceManagerController {
@@ -63,50 +60,20 @@ public class FinanceManagerController {
         return "addshoppingitem";
     }
 
-    private ModelAndView getAddShoppingItemModel(Principal principal, String errorMessage) {
-        ModelAndView model = new ModelAndView("addshoppingitem");
-        User user = service.getUserByUserName(principal.getName());
-        model.addObject("user", user);
-        model.addObject("shops", service.listShops());
-        model.addObject("shoppingCategories", service.listCategories());
-        model.addObject("currencies", service.listCurrencies());
-        model.addObject("errorMessage", errorMessage);
-        return model;
-    }
 
     @RequestMapping(value = "/user/afteraddingItem.html", method = RequestMethod.POST)
     public ModelAndView afterAddingShoppingItem(Principal principal,
-                                                @RequestParam("date") String date,
                                                 @RequestParam("shoppingCategory") String shoppingCategoryId,
                                                 @RequestParam("currency") String currencyId,
                                                 @RequestParam("amount") String amount,
                                                 @RequestParam("shop") String shopId,
+                                                @RequestParam("date") String date,
                                                 @RequestParam("description") String description
+
     ) {
-        StringBuilder sb = new StringBuilder();
-        // parsing date
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date validDate = null;
-        try {
-            validDate = simpleDateFormat.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            sb.append("\nDate is invalid format. Please use format 'yyyy-MM-dd'");
-
-            return getAddShoppingItemModel(principal, sb.toString());
-        }
-
-        // parsing amount
-//        Pattern pattern = Pattern.compile("^[+-]?[1-9][0-9]+[.]?[0-9]{2}?");
-//        Matcher matcher = pattern.matcher(amount);
-        if (!amount.matches("^[+]?[1-9][0-9]+[.]?[0-9]{2}?")) {
-            sb.append("\nAmount format is bot valid. Please use 'DDDD.DD'");
-            return getAddShoppingItemModel(principal, sb.toString());
-        }
-
-
         ShoppingItem item = new ShoppingItem();
-
+        // service.removeShoppingItemByID(Integer.parseInt(id));
+        // user
         item.setUser(service.getUserByUserName(principal.getName()));
 
         // shopping category
@@ -126,14 +93,14 @@ public class FinanceManagerController {
         item.setShop(shop);
 
         // date
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        Date shoppingItemDate = null;
-//        try {
-//            shoppingItemDate = dateFormat.parse(date);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-        item.setDate(validDate);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date shoppingItemDate = null;
+        try {
+            shoppingItemDate = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        item.setDate(shoppingItemDate);
 
         // description
         item.setDescription(description);
@@ -200,5 +167,30 @@ public class FinanceManagerController {
         ModelAndView model = new ModelAndView("redirect:welcomePage.html");
 
         return model;
+    }
+
+    @RequestMapping(value = "/user/viewreport{id}", method = RequestMethod.GET)
+    public String viewUserReport(@PathVariable String id, Model model) {
+//        if (fromDate.equals("") || toDate.equals("")) {
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            Date today = new Date();
+//            Calendar cal = new GregorianCalendar();
+//            cal.setTime(today);
+//            cal.add(Calendar.DAY_OF_MONTH, -30);
+//            Date from = cal.getTime();
+//            fromDate = dateFormat.format(from);
+//            toDate = dateFormat.format(today);
+//        }
+//        
+        List<Object[]> items = service.getUserShoppingCategoriesByDate(Integer.parseInt(id), "", "");
+
+        Map<String, Double> categoriesPrizes = new HashMap<String, Double>();
+        for (Object[] item : items) {
+            String category = (String) item[0];
+            Double prize = (Double) item[1];
+            categoriesPrizes.put(category, prize);
+        }
+        model.addAttribute("items", categoriesPrizes);
+        return "viewreport";
     }
 }
