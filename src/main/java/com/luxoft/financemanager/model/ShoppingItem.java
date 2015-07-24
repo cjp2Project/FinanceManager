@@ -1,6 +1,7 @@
 package com.luxoft.financemanager.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
