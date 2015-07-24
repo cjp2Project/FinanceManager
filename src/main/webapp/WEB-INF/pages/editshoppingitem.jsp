@@ -11,20 +11,39 @@
 
 <html>
 <head>
-    <title>Add shopping item</title>
-    <table>
-        <tr>
-            <td>User name</td>
-            <td>${user.userName} </td>
-        </tr>
 
-        <tr>
-            <td>user email:</td>
-            <td>${user.email}</td>
-        </tr>
-    </table>
+    <meta charset="utf-8">
 
-    <h2>Add shopping item</h2>
+
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href="<c:url value="/resources/static/css/demo.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/static/css/menu.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/static/js/menu.js" />"></script>
+
+
+    <div id='cssmenu'>
+        <ul>
+            <li><a href="/user/welcomePage.html"><span>Spends list</span></a></li>
+            <li><a href="/user/addshoppingitem.html"><span>Add item</span></a></li>
+            <li><a href='#'><span>View report</span></a></li>
+            <li class='rightside'><a href="<c:url value="/j_spring_security_logout" />"><span>Logout</span></a></li>
+        </ul>
+    </div>
+
+
+
+    <title>edititem</title>
+
+
+    <h2>Edit item</h2>
 
     <form method="post" action="/user/aftereditingItem.html">
         <table>
@@ -95,7 +114,13 @@
             </tr>
         </table>
 
-        <input type="submit" value="edit"/>
+        <br>
+
+        <button>Edit
+            <input type="submit" hidden/>
+
+        </button>
+
     </form>
 
 </head>
